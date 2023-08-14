@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trading App</title>
+</head>
+<body>
+  <h1>Trading App</h1>
+  <div id="stock-list">
+    <ul>
+      <li>Apple</li>
+      <li>Google</li>
+      <li>Microsoft</li>
+      <li>Amazon</li>
+      <li>Tesla</li>
+    </ul>
+  </div>
+  <script>
+    // Get the stock list from the API.
+    const stockList = await fetch('https://api.example.com/stocks');
+    const stockData = await stockList.json();
+
+    // Render the stock list in the UI.
+    const stockElement = document.getElementById('stock-list');
+    for (const stock of stockData) {
+      const liElement = document.createElement('li');
+      liElement.innerHTML = stock.symbol;
+      stockElement.appendChild(liElement);
+    }
+  </script>
+</body>
+</html>
